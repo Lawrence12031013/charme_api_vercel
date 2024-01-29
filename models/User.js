@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     password: { type:String, required: true },
     email:{type:String},
     isAdmin: { type:Boolean, default: false},
-    comment:{type:String, default: () => `${new Date()} 註冊帳號`}
+    comment:{type:String, default: () => `${new Date().getFullYear}-${new Date().getMonth}-${new Date().getDay}  註冊帳號`}
 })
 
 export default mongoose.model('User', UserSchema)
