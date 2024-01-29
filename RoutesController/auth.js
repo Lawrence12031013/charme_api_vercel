@@ -23,6 +23,7 @@ export const Register = async (req, res, next) => {
     }
 }
 
+//登入會員
 export const Login = async (req,res,next)=>{
     const loginData = req.body
     try{
@@ -41,7 +42,6 @@ export const Login = async (req,res,next)=>{
         httpOnly: true
     })
     .status(200).json({userDetails})
-
     }
     catch(error){
         next(errorMessage(500, "登入失敗",error))

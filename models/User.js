@@ -4,7 +4,9 @@ const UserSchema = new mongoose.Schema({
     name: { type: String, required: true },
     phone: { type:String, required: true, unique: true },
     password: { type:String, required: true },
-    isAdmin: { type:Boolean, default: false}
+    email:{type:String},
+    isAdmin: { type:Boolean, default: false},
+    comment:{type:String, default: () => `${new Date()} 註冊帳號`}
 })
 
 export default mongoose.model('User', UserSchema)
