@@ -62,9 +62,7 @@ export const AdminLogin = async (req,res,next)=>{
     
     if(userData.isAdmin) {
         const token = jwt.sign({id: userData._id, isAdmin: userData.isAdmin },process.env.JWT) //process.env.JWT就是你自己知道並設立的金鑰
-        console.log(token)
         const {password, isAdmin, ...userDetails} = userData._doc;
-        console.log(userData._doc)
         res.cookie('JWT_token',token,{
             httpOnly: true
         })
