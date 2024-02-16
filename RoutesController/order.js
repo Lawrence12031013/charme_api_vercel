@@ -89,9 +89,9 @@ export const getAllOrdersByID = async (req, res, next) => {
 
 // 透過日期 查找訂單資料
 export const getOrdersByDate = async (req, res, next) => {
-    const date = req.params.date.toString();
+    const date = req.params.date;
     try {
-        const getOrderByDate = await Order.find({ "reservationDate": date }).exec();
+        const getOrderByDate = await Order.find({ "reservationDate": date })
         res.status(200).json(getOrderByDate);
     } catch (err) {
         next(errorMessage(404, '查無此訂單', err));
