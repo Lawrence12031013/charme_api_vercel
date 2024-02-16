@@ -90,11 +90,11 @@ export const getAllOrdersByID = async (req, res, next) => {
 // 透過日期 查找訂單資料
 export const getOrdersByDate = async (req, res, next) => {
     const date = req.params.date;
-        const getOrderByDate = await Order.find({ "reservationDate": date }, (err, data) => {
+        Order.find({ "reservationDate": date }, (err, data) => {
             if (err) {
                 res.status(404).json(err);
             } else {
-                res.status(200).json(getOrderByDate);
+                res.status(200).json(data);
             }
         })
 };
