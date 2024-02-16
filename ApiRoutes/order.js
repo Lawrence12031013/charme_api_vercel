@@ -1,5 +1,5 @@
 import express from 'express'
-import { createOrder, getOrder, updateOrder, deleteOrder, getAllOrders } from '../RoutesController/order.js'
+import { createOrder, getOrder, updateOrder, deleteOrder, getAllOrders, getOrdersByDate } from '../RoutesController/order.js'
 import { verifyAdmin, verifyUser } from '../JWT_Token.js'
 
 const router = express.Router()
@@ -21,5 +21,8 @@ router.get('/',verifyAdmin, getAllOrders)
 
 //會員查看消費訂單
 router.get('/user/:userId', getAllOrders)
+
+// 日期查找訂單
+router.get('/user/:date', getOrdersByDate)
 
 export default router
