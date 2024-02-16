@@ -92,7 +92,7 @@ export const getOrdersByDate = async (req, res, next) => {
     const date = req.params.date;
         const getOrderByDate = await Order.find({ "reservationDate": date }, (err, data) => {
             if (err) {
-                next(errorMessage(404, '查無此訂單', err));
+                res.status(404).json(err);
             } else {
                 res.status(200).json(getOrderByDate);
             }
