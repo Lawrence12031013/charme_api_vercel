@@ -23,6 +23,6 @@ router.get('/',verifyAdmin, getAllOrders)
 router.get('/user/:userId', getAllOrders)
 
 // 日期查找訂單
-router.get('/:date', getOrdersByDate)
+router.get('/date/:date', getOrdersByDate)
 
 export default router
