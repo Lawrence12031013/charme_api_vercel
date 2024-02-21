@@ -72,18 +72,15 @@ export const getAllOrdersByID = async (req, res, next) => {
     const userId = req.params.userid
     try {
         const userData = await User.findById(userId)
-        try{
-            const OrdersList = await Promise.all(userData.record.map(
-                userId => {
-                    return Order.find({"userID":userId})
-                }
-            ))
-            res.status(200).json(OrdersList)
+        const userId = userData._id
+        try {
+            const getOrderByUserID = await Order.find({"userID":userId})
+            res.status(200).json(getOrderByUserID)
         }catch(err){
-            next(errorMessage(404, '尋找訂單發生錯誤', err))
+            next(errorMessage(404,'查無此訂單', err))
         }
     }catch(err){
-        next(errorMessage(404, '找不到該訂單', err))
+        next(errorMessage(404, '找不到該用戶', err))
     }
 }
 
