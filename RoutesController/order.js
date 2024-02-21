@@ -69,9 +69,9 @@ export const getAllOrders = async (req, res, next) => {
 
 // 透過顧客ID 查找所有資料
 export const getAllOrdersByID = async (req, res, next) => {
-    const userId = req.params.userid
+    const userId = req.params.userid.toString()
         try {
-            const getOrderByUserID = await Order.find({"userID":userId})
+            const getOrderByUserID = await Order.find({'userID':userId})
             res.status(200).json(getOrderByUserID)
         }catch(err){
             next(errorMessage(404,'查無此訂單', err))
