@@ -70,18 +70,12 @@ export const getAllOrders = async (req, res, next) => {
 // 透過顧客ID 查找所有資料
 export const getAllOrdersByID = async (req, res, next) => {
     const userId = req.params.userid
-    try {
-        const userData = await User.findById(userId)
-        const userId = userData._id
         try {
             const getOrderByUserID = await Order.find({"userID":userId})
             res.status(200).json(getOrderByUserID)
         }catch(err){
             next(errorMessage(404,'查無此訂單', err))
         }
-    }catch(err){
-        next(errorMessage(404, '找不到該用戶', err))
-    }
 }
 
 // 透過日期 查找訂單資料
