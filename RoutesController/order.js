@@ -75,7 +75,7 @@ export const getAllOrdersByID = async (req, res, next) => {
         try{
             const OrdersList = await Promise.all(userData.record.map(
                 userId => {
-                    return Order.find({"_id":userId})
+                    return Order.find({"userID":userId})
                 }
             ))
             res.status(200).json(OrdersList)
