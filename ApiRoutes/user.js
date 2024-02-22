@@ -10,6 +10,6 @@ router.get('/:id', verifyUser, getUser)
 
 router.put('/:id', verifyUser, updatedUser)
 
-router.delete('/:id', verifyUser, deleteUser)
+router.delete('/:id', verifyAdmin, deleteUser)
 
 export default router
