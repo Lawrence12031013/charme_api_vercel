@@ -37,7 +37,7 @@ export const getUsers = async (req, res, next) => {
 
 // 讀取會員資料
 export const getUser = async (req, res, next) => {
-    const userID = req.params.userID;
+    const userID = req.params.userID.toString();
     try {
         const getUser = await User.find({ '_id': ObjectId(userID) });
         res.status(200).json(getUser);
