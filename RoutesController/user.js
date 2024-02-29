@@ -1,5 +1,6 @@
 import { errorMessage } from "../errorMessage.js";
 import User from '../models/User.js'
+import {ObjectId} from 'mongodb'
 
 //更改User
 export const updatedUser = async (req, res, next) => {
@@ -37,8 +38,9 @@ export const getUsers = async (req, res, next) => {
 // 讀取會員資料
 export const getUser = async (req, res, next) => {
     const userID = req.params.userID;
+    const id = new ObjectId(userID)
     try{
-        const getUser = await User.find({'_id':ObjectId(userID)})
+        const getUser = await User.find({'_id':id})
         res.status(200).json(getUser)
     }catch(err){
         next(errorMessage(404, '讀取會員失敗', err))
