@@ -38,9 +38,9 @@ export const getUsers = async (req, res, next) => {
 // 讀取會員資料
 export const getUser = async (req, res, next) => {
     const userID = req.params.userID;
-    const id = new ObjectId(userID)
+    const nid = new BSON.ObjectId(userID)
     try {
-        const getUser = await User.find({ '_id': ObjectId(id) });
+        const getUser = await User.findOne({ _id:  nid});
         res.status(200).json(getUser);
     } catch (err) {
         next(errorMessage(404, '讀取會員失敗', err));
