@@ -40,7 +40,7 @@ export const getUser = async (req, res, next) => {
     const userID = req.params.userID;
     const id = new ObjectId(userID)
     try {
-        const getUser = await User.find({ '_id': id });
+        const getUser = await User.find({ '_id': ObjectId(id) });
         res.status(200).json(getUser);
     } catch (err) {
         next(errorMessage(404, '讀取會員失敗', err));
