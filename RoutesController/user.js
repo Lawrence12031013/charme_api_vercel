@@ -1,6 +1,6 @@
 import { errorMessage } from "../errorMessage.js";
 import User from '../models/User.js'
-import {ObjectId} from 'mongodb'
+import { ObjectId } from 'mongodb';
 
 //更改User
 export const updatedUser = async (req, res, next) => {
