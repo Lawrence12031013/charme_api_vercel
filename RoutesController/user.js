@@ -37,12 +37,11 @@ export const getUsers = async (req, res, next) => {
 
 // 讀取會員資料
 export const getUser = async (req, res, next) => {
-    const userID = req.params.userID;
-    const id = mongoose.Types.ObjectId(userID);
+    const id = req.params.id
     try {
-        const getUser = await User.findOne({ '_id':  id});
-        res.status(200).json(getUser);
-    } catch (err) {
-        next(errorMessage(404, '讀取會員失敗', err));
+        const getUser = await User.findById(id)
+        res.status(200).json(getUser)
+    }catch(err){
+        next(errorMessage(404,'查無此訂單', err))
     }
 }
